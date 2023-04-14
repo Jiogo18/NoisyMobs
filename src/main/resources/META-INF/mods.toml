@@ -1,0 +1,32 @@
+modLoader="javafml" # Forge mod loader
+loaderVersion="[36,)"
+license="GNU GPLv3"
+[[mods]]
+modId="noisymobs"
+version="${file.jarVersion}"
+displayName="Noisy Mobs"
+#displayURL="https://github.com/Jiogo18/NoisyMobs/"
+logoFile="noisymobs.png"
+credits="Jiogo18"
+authors="Jiogo18"
+description='''
+Mooooo Hmmm Cot cot
+You know, animals can sleep right?
+
+Vanilla mobs are too noisy, so I decided to make them quieter.
+
+This mod reduces the quantity of ambient sounds of vanilla mobs.
+The other sounds are not affected.
+'''
+[[dependencies.noisymobs]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="CLIENT"
+[[dependencies.noisymobs]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="CLIENT"
