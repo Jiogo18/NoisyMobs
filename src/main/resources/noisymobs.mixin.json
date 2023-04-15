@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "com.jiogo18.noisymobs.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "noisymobs.mixins.refmap.json",
+	"mixins": [
+	],
+	"client": [
+		"MixinMobEntity",
+		"MixinWidget"
+	],
+	"injectors": {
+	  "defaultRequire": 1
+	}
+  }
