@@ -1,4 +1,4 @@
-package com.jiogo18.noisymobs.mixin;
+package me.jiogo18.noisymobs.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,15 +15,15 @@ import net.minecraft.world.World;
 
 @Mixin(ChickenEntity.class)
 public abstract class MixinChickenEntity extends AnimalEntity {
-	protected MixinChickenEntity(EntityType<? extends AnimalEntity> type, World world) {
-		super(type, world);
-	}
+    protected MixinChickenEntity(EntityType<? extends AnimalEntity> type, World world) {
+        super(type, world);
+    }
 
-	@Inject(method = "playStepSound", at = @At("HEAD"), cancellable = true)
-	protected void playStepSound(BlockPos pos, BlockState blockState, CallbackInfo info) {
-		ChickenEntity chicken = (ChickenEntity) (Object) this;
-		float volume = 0.15F + this.random.nextFloat() * 0.1F;
-		float pitch = 0.9F + this.random.nextFloat() * 0.15F;
-		chicken.playSound(SoundEvents.CHICKEN_STEP, volume, pitch);
-	}
+    @Inject(method = "playStepSound", at = @At("HEAD"), cancellable = true)
+    protected void playStepSound(BlockPos pos, BlockState blockState, CallbackInfo info) {
+        ChickenEntity chicken = (ChickenEntity) (Object) this;
+        float volume = 0.15F + this.random.nextFloat() * 0.1F;
+        float pitch = 0.9F + this.random.nextFloat() * 0.15F;
+        chicken.playSound(SoundEvents.CHICKEN_STEP, volume, pitch);
+    }
 }

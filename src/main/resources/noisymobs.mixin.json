@@ -1,17 +1,16 @@
 {
-	"required": true,
-	"package": "com.jiogo18.noisymobs.mixin",
-	"compatibilityLevel": "JAVA_8",
-	"refmap": "noisymobs.mixins.refmap.json",
-	"mixins": [
-	],
-	"client": [
-		"MixinMobEntity",
-		"MixinWidget",
-		"MixinEntity",
-		"MixinChickenEntity"
-	],
-	"injectors": {
-	  "defaultRequire": 1
-	}
+    "required": true,
+    "package": "me.jiogo18.noisymobs.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "refmap": "noisymobs.mixins.refmap.json",
+    "mixins": [
+    ],
+    "client": [
+        "MixinMobEntity",
+        "MixinEntity",
+        "MixinChickenEntity"
+    ],
+    "injectors": {
+      "defaultRequire": 1
+    }
   }

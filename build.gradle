@@ -15,8 +15,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.0.0'
-group = 'com.jiogo18.noisymobs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = '1.16.5-1.0.0.0'
+group = 'me.jiogo18.noisymobs' // http://maven.apache.org/guides/mini/guide-nam ing-conventions.html
 archivesBaseName = 'noisymobs'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
