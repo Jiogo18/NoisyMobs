@@ -12,8 +12,23 @@ public class SoundDistribution {
     }
 
     public enum Distribution {
-        VANILLA, // Vanilla distribution : Rayleigh with σ² = 986.27
-        DISCUSSION, // Lots of sounds in a row, then silence for a longer time
+        VANILLA("vanilla"), // Vanilla distribution : Rayleigh with σ² = 986.27
+        DISCUSSION("discussion"), // Lots of sounds in a row, then silence for a longer time
+        ;
+
+        private final String key;
+
+        Distribution(String key) {
+            this.key = key;
+        }
+
+        public String getTranslateKey() {
+            return "noisymobs.sound_distribution." + key;
+        }
+
+        public static Distribution getDefault() {
+            return Distribution.DISCUSSION;
+        }
     }
 
     public static int getNextAmbientSoundTicks(MobEntity mob, Distribution distribution) {

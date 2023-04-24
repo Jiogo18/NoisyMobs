@@ -1,0 +1,9 @@
+{
+    "noisymobs.gui.config.title": "Noisy Mobs Configuration",
+    "noisymobs.gui.reset": "Reset",
+    "noisymobs.gui.config.sound_distribution.title": "Sound Distribution",
+    "noisymobs.sound_distribution.vanilla": "Vanilla",
+    "noisymobs.sound_distribution.discussion": "Discussion",
+    "noisymobs.gui.config.customize.title": "Customize",
+    "noisymobs.gui.config.customize.sound_mean_time.title": "Mean Time between Sounds"
+}
