@@ -6,7 +6,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.jiogo18.noisymobs.common.engine.SoundDistribution;
+import me.jiogo18.noisymobs.common.config.ConfigManager;
+import me.jiogo18.noisymobs.common.engine.SoundEngine;
 import me.jiogo18.noisymobs.common.engine.SoundPlayer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -30,17 +31,21 @@ public abstract class MixinMobEntity extends LivingEntity {
     public abstract void playAmbientSound();
 
     private void resetCustomAmbientSoundTime() {
-        this.ambientSoundTime = -SoundDistribution.getNextAmbientSoundTicks((MobEntity) (Object) this);
+        this.ambientSoundTime = -SoundEngine.getNextAmbientSoundTicks((MobEntity) (Object) this);
     }
 
     @Inject(method = "resetAmbientSoundTime", at = @At("HEAD"), cancellable = true)
     protected void resetAmbientSoundTime(CallbackInfo info) {
+        if (!ConfigManager.isSoundEngineEnabled())
+            return;
         info.cancel();
         resetCustomAmbientSoundTime();
     }
 
     @Inject(method = "baseTick", at = @At("HEAD"), cancellable = true)
     public void baseTick(CallbackInfo info) {
+        if (!ConfigManager.isSoundEngineEnabled())
+            return;
         super.baseTick();
         this.level.getProfiler().push("mobBaseTick");
         if (this.isAlive()) {
@@ -56,6 +61,8 @@ public abstract class MixinMobEntity extends LivingEntity {
 
     @Inject(method = "playAmbientSound", at = @At("HEAD"), cancellable = true)
     public void playAmbientSound(CallbackInfo info) {
+        if (!ConfigManager.isSoundEngineEnabled())
+            return;
         info.cancel();
         SoundEvent soundevent = this.getAmbientSound();
         if (soundevent != null) {

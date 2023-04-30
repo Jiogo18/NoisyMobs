@@ -14,9 +14,10 @@ public class SoundLimiter {
     private int soundCountTotal = 0;
     private float previousProportionPlayed = 1.0f;
     private long startNextCycle = 0;
+    private boolean enabled = true;
 
-    public SoundLimiter(int maxSoundCountPerSecond, int cycleDuration) {
-        this.maxSoundCountPerCycle = maxSoundCountPerSecond;
+    public SoundLimiter(int maxSoundCountPerCycle, int cycleDuration) {
+        this.maxSoundCountPerCycle = maxSoundCountPerCycle;
         this.cycleDuration = cycleDuration;
     }
 
@@ -30,6 +31,8 @@ public class SoundLimiter {
     }
 
     public boolean canPlayNewSound(Vector3d position) {
+        if (!enabled)
+            return true;
         // if too far away, play the sound but don't count it
         Minecraft instance = Minecraft.getInstance();
         ClientPlayerEntity player = instance.player;
@@ -68,5 +71,9 @@ public class SoundLimiter {
 
         soundCountPlayed++;
         return true;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

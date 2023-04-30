@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 
-import me.jiogo18.noisymobs.ConfigManager;
 import me.jiogo18.noisymobs.NoisyMobsMod;
+import me.jiogo18.noisymobs.common.config.ConfigManager;
 import net.minecraft.client.AbstractOption;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -102,8 +102,10 @@ public abstract class AbstractConfigScreen extends Screen {
         }
     }
 
-    protected <T extends AbstractOption> T addBigOption(T button) {
+    protected <T extends AbstractOption> T addBigOption(T button, String tooltipKey) {
         this.optionsRowList.addBig(button);
+        Minecraft mc = getMinecraft();
+        button.setTooltip(mc.font.split(new TranslationTextComponent(tooltipKey), 200));
         return button;
     }
 
@@ -125,5 +127,10 @@ public abstract class AbstractConfigScreen extends Screen {
     public void onClose() {
         ConfigManager.save();
         this.getMinecraft().setScreen(parentScreen);
+    }
+
+    public void reload() {
+        this.children.clear();
+        this.init();
     }
 }

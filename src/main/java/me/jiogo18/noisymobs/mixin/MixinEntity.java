@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import me.jiogo18.noisymobs.common.config.ConfigManager;
 import me.jiogo18.noisymobs.common.engine.SoundLimiterEngine;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -23,12 +24,16 @@ public abstract class MixinEntity {
 
     @Inject(method = "playStepSound", at = @At("HEAD"), cancellable = true)
     protected void playStepSound(BlockPos pos, BlockState blockState, CallbackInfo info) {
+        if (!ConfigManager.isSoundEngineEnabled())
+            return;
         if (!SoundLimiterEngine.getStepSoundLimiter().canPlayNewSound(this.position()))
             info.cancel();
     }
 
     @Inject(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;playStepSound(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V"), cancellable = true)
     protected void move(MoverType type, Vector3d direction, CallbackInfo info) {
+        if (!ConfigManager.isSoundEngineEnabled())
+            return;
         Entity entity = (Entity) (Object) this;
         if (entity instanceof AnimalEntity) {
             AnimalEntity animal = (AnimalEntity) entity;
