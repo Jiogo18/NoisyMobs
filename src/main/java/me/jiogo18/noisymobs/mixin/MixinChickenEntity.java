@@ -25,8 +25,8 @@ public abstract class MixinChickenEntity extends AnimalEntity {
         if (!ConfigManager.isSoundEngineEnabled())
             return;
         ChickenEntity chicken = (ChickenEntity) (Object) this;
-        float volume = 0.05F + this.random.nextFloat() * 0.05F;
-        float pitch = 0.9F + this.random.nextFloat() * 0.15F;
+        float volume = 0.05F + this.random.nextFloat() * 0.1F;
+        float pitch = 0.8F + this.random.nextFloat() * 0.3F;
         chicken.playSound(SoundEvents.CHICKEN_STEP, volume, pitch);
     }
 }
