@@ -3,7 +3,7 @@ loaderVersion="[36,)"
 license="GNU GPLv3"
 [[mods]]
 modId="noisymobs"
-version="${file.jarVersion}"
+version="1.16.5-1.0.0"
 displayName="Noisy Mobs"
 #displayURL="https://github.com/Jiogo18/NoisyMobs/"
 logoFile="noisymobs.png"
